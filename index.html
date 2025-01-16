@@ -6,6 +6,15 @@
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <script src="process_data.js"></script>
     <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
         .node {
             stroke: #000;
             stroke-width: 4px;
@@ -14,7 +23,7 @@
         .link {
             stroke: #999;
             stroke-opacity: 0.8;
-            stroke-width: 5px;
+            stroke-width: 4px;
         }
 
         .tooltip {
@@ -67,12 +76,13 @@
             top: 20px;
             left: 20px;
             background: white;
-            padding: 15px;
+            padding: 30px;
             border-radius: 5px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
             font-family: Arial, sans-serif;
             font-size: 12px;
             min-width: 200px;
+            max-width: 300px;
         }
 
         .legend-title {
@@ -127,7 +137,8 @@
             height: 100vh;
             margin: 0;
             padding: 0;
-            background: #f9f9f9;
+            background: #f9f9f9 url('images/background.png') center/cover no-repeat;
+            background-position: 25% 50%;
         }
 
         .node text {
@@ -256,12 +267,29 @@
             border-radius: 5px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
             z-index: 1000;
+            text-align: center;
+        }
+
+        #logo {
+            position: absolute;
+            top: 80px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        #logo img {
+            max-width: 200px;
+            height: auto;
         }
     </style>
 </head>
 
-<body style="margin: 0; overflow: hidden;">
-    <div id="title">Unified Control Framework</div>
+<body <div id="title">Unified Control Framework</div>
     <div id="controls">
         <div class="control-group">
             <label>Layout Type</label>
@@ -321,17 +349,12 @@
         // Constants
 
         const colorMap = {
-            'Operational': '#2f4f4f',
-            'Security': '#8b4513',
             'Privacy': '#006400',
             'Fairness & Bias': '#4b0082',
             'Human-AI Interaction': '#ff0000',
-            'Legal': '#00ced1',
             'Performance & Robustness': '#ffa500',
             'Malicious Use': '#ffff00',
-            'Information Integrity': '#00ff00',
             'Environmental Harm': '#0000ff',
-            'Third Party': '#ff00ff',
             'Societal Impact': '#6495ed',
             'AI Agency': '#ff1493',
             'Harmful Content': '#98fb98',
@@ -353,6 +376,8 @@
         let visibleNodeTypes = new Set(['risk', 'control']);
         let edgeVisibilityRatio = 1.0; // Default to show all edges
         let visibleEdgeIndices = new Set();
+        let edgeWidth = 4;
+        let edgeWidthSmall = 1;
 
         // Force parameters
         let parameters = {
@@ -695,7 +720,7 @@
 
                 currentNodeGroup.style("opacity", n => connectedNodes.has(n) || n === d ? 1 : 0.1);
                 currentLinkGroup.style("opacity", l => l.source === d || l.target === d ? 1 : 0.1)
-                    .style("stroke-width", l => l.source === d || l.target === d ? 3 : 1);
+                    .style("stroke-width", l => l.source === d || l.target === d ? edgeWidth + 1 : edgeWidthSmall);
             })
                 .on("mouseout", function (d) {
                     tooltip.transition()
@@ -704,7 +729,7 @@
 
                     currentNodeGroup.style("opacity", 1);
                     currentLinkGroup.style("opacity", 0.6)
-                        .style("stroke-width", 1.5);
+                        .style("stroke-width", edgeWidth);
                     updateVisibility();
                 });
 
@@ -775,9 +800,20 @@
                 .append("div")
                 .attr("id", "legend");
 
+            // Add Credo AI Logo
+            legend.append("div")
+                .attr("id", "legend-logo")
+                .style("text-align", "left")
+                .style("margin-bottom", "15px")
+                .append("img")
+                .attr("src", "images/Credo_AI_Logo.png")
+                .attr("alt", "Credo AI Logo")
+                .style("width", "50%");
+
             // Add legend title
             legend.append("div")
                 .attr("class", "legend-title")
+                .style("text-align", "left")
                 .text("Legend");
 
             // Add control section with toggle
