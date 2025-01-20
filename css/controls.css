@@ -1,0 +1,85 @@
+#controls {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    background: white;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    min-width: 200px;
+}
+
+.control-group {
+    margin-bottom: 15px;
+}
+
+.control-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    color: #333;
+}
+
+select {
+    width: 100%;
+    padding: 5px;
+    font-size: 14px;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+.slider-container {
+    margin-top: 5px;
+}
+
+.slider-container label {
+    display: block;
+    font-size: 11px;
+    margin-bottom: 2px;
+}
+
+input[type="range"] {
+    width: 100%;
+    margin: 2px 0;
+}
+
+.parameter-value {
+    font-size: 11px;
+    color: #666;
+    margin-left: 5px;
+}
+
+.risk-label {
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+    font-weight: normal;
+    letter-spacing: 0.5px;
+}
+
+.button-container {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-top: 5px;
+}
+
+.pause-button {
+    padding: 5px 10px;
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+}
+
+.pause-button:hover {
+    background: #f0f0f0;
+}
+
+.pause-button.active {
+    background: #e0e0e0;
+    border-color: #999;
+}

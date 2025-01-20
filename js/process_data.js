@@ -133,8 +133,8 @@ function extractRelationships(risks) {
 async function processData() {
     try {
 
-        const riskResponse = await fetch('risk_library.csv');
-        const controlResponse = await fetch('control_library.csv');
+        const riskResponse = await fetch('data/risk_library.csv');
+        const controlResponse = await fetch('data/control_library.csv');
 
         const riskContent = await riskResponse.text();
         const controlContent = await controlResponse.text();

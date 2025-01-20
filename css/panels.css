@@ -1,0 +1,124 @@
+.side-panel {
+    position: fixed;
+    right: -50vw;
+    top: 0;
+    height: 100vh;
+    width: 50vw;
+    background: white;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
+    transition: right 0.3s ease-in-out;
+    z-index: 1001;
+}
+
+.side-panel.active {
+    right: 0;
+}
+
+.panel-tab {
+    position: absolute;
+    left: -40px;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 240px;
+    background: white;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    writing-mode: vertical-lr;
+    text-orientation: mixed;
+    transform: rotate(180deg);
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 5px 0 0 5px;
+    transition: background-color 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#controls-panel .panel-tab {
+    top: 20%;
+}
+
+#risks-panel .panel-tab {
+    top: 40%;
+}
+
+.panel-tab:hover {
+    background: #7c02ca;
+    color: white;
+}
+
+.panel-content {
+    padding: 20px;
+    height: 100%;
+    overflow-y: auto;
+}
+
+.panel-header {
+    position: sticky;
+    top: 0;
+    background: white;
+    padding: 15px 20px;
+    border-bottom: 2px solid #ddd;
+    font-size: 18px;
+    font-weight: bold;
+    z-index: 1;
+}
+
+.panel-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.panel-table th,
+.panel-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.panel-table th {
+    background: #f5f5f5;
+    font-weight: bold;
+}
+
+.panel-table tr:hover {
+    background: #f9f9f9;
+}
+
+.close-panel {
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    cursor: pointer;
+    font-size: 24px;
+    color: #666;
+}
+
+.close-panel:hover {
+    color: #333;
+}
+
+.clickable-row {
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.clickable-row:hover {
+    background-color: #f0f0f0 !important;
+}
+
+.clickable-row.selected {
+    background-color: #e6e6ff !important;
+    border-left: 4px solid #7c02ca;
+}
+
+.risk-type-cell {
+    padding: 4px 8px;
+    border-radius: 4px;
+    color: white;
+    display: inline-block;
+    font-weight: bold;
+}
