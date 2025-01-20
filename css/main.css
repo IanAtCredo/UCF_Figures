@@ -53,6 +53,23 @@ body {
     pointer-events: none;
 }
 
+.policy-node {
+    fill: white;
+    /* Dark blue */
+    stroke: #7c02ca;
+}
+
+.policy-link {
+    stroke-dasharray: 8, 4;
+    /* Creates dashed line pattern */
+}
+
+.policy-label {
+    font-size: 12px;
+    text-anchor: middle;
+    fill: #333;
+}
+
 .risk-label {
     font-family: Arial, sans-serif;
     font-size: 11px;

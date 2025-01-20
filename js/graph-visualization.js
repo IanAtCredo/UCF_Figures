@@ -39,7 +39,7 @@ let isSimulationPaused = false;
 let zoom;
 // Add these new functions for filtering
 let visibleRiskTypes = new Set(Object.keys(colorMap));
-let visibleNodeTypes = new Set(['risk', 'control']);
+let visibleNodeTypes = new Set(['risk', 'control', 'policy']);
 let edgeVisibilityRatio = 1.0; // Default to show all edges
 let visibleEdgeIndices = new Set();
 let edgeWidth = 4;
@@ -249,7 +249,7 @@ async function initializeGraph() {
     // Initialize parameters before setting up the graph
     initializeParameters();
 
-    const { riskData, controlData, relationships } = data;
+    const { riskData, controlData, policyData, relationships } = data;
 
     // Calculate control degrees (number of connections)
     const controlDegrees = new Map();
@@ -277,16 +277,27 @@ async function initializeGraph() {
             const node = { ...d, type: 'control', radius, connections };
             nodeMap.set(d.id, node);
             return node;
+        }),
+        ...policyData.map(p => {
+            const node = {
+                ...p,
+                type: 'policy',
+                radius: 70
+            };
+            nodeMap.set(p.id, node);
+            return node;
         })
     ];
 
     currentNodes = nodes;
 
     // Create links using the node map
+    console.log(relationships);
     const links = relationships
         .map(d => ({
             source: nodeMap.get(d.source),
-            target: nodeMap.get(d.target)
+            target: nodeMap.get(d.target),
+            type: d.type
         }))
         .filter(d => d.source && d.target);
 
@@ -319,7 +330,7 @@ async function initializeGraph() {
         .selectAll("line")
         .data(links)
         .join("line")
-        .attr("class", "link");
+        .attr("class", d => `link ${d.type}-link`);  // Add type-specific class
 
     // Create the nodes
     currentNodeGroup = container.append("g")
@@ -349,7 +360,7 @@ async function initializeGraph() {
                 .attr("dy", d => d.radius + 15)
                 .attr("class", "risk-label")
                 .text(d => d.name.substring(0, 20) + (d.name.length > 20 ? '...' : ''));
-        } else {
+        } else if (d.type === 'control') {
             // Add circle for controls
             node.append("circle")
                 .attr("r", d => d.radius)
@@ -362,6 +373,26 @@ async function initializeGraph() {
 
             // Add arcs for risk type distribution
             updateControlArcs.call(this, d);
+        } else if (d.type === 'policy') {
+            // Add pentagon for policy nodes
+            node.append("path")
+                .attr("d", d => {
+                    const size = d.radius;
+                    const angle = 2 * Math.PI / 5; // Pentagon has 5 sides
+                    return Array.from({ length: 5 }, (_, i) => {
+                        const a = i * angle - Math.PI / 2; // Start from top point
+                        const x = size * Math.cos(a);
+                        const y = size * Math.sin(a);
+                        return (i === 0 ? "M" : "L") + x + "," + y;
+                    }).join("") + "Z";
+                })
+                .attr("class", "policy-node");
+
+            node.append("text")
+                .attr("class", "policy-label")
+                .attr("text-anchor", "middle")
+                .attr("alignment-baseline", "middle")
+                .text(d => d.id);
         }
     });
 
@@ -486,6 +517,16 @@ function createLegend() {
         .text("Legend");
 
     // Add control section with toggle
+    addControlSection(legend);
+
+    // Add policy section with toggle
+    addPolicySection(legend);
+
+    // Add Risk Types section with toggle
+    addRiskTypesSection(legend);
+}
+
+function addControlSection(legend) {
     const controlSection = legend.append("div")
         .attr("class", "legend-section");
 
@@ -512,8 +553,37 @@ function createLegend() {
         .style("color", "#666")
         .style("margin", "0 0 15px 23px")
         .text("Size indicates number of risk connections");
+}
 
-    // Add Risk Types section with toggle
+function addPolicySection(legend) {
+    const policySection = legend.append("div")
+        .attr("class", "legend-section");
+
+    const policyToggle = policySection.append("div")
+        .attr("class", "legend-item")
+        .on("change", (event) => toggleNodeType('policy', event));
+
+    policyToggle.append("input")
+        .attr("type", "checkbox")
+        .attr("class", "legend-checkbox")
+        .attr("checked", true);
+
+    policyToggle.append("div")
+        .attr("class", "legend-color")
+        .style("background-color", "#7c02ca")
+        .style("border-radius", "50%");
+
+    policyToggle.append("div")
+        .text("Policy Requirements");
+
+    policySection.append("div")
+        .style("font-size", "11px")
+        .style("color", "#666")
+        .style("margin", "0 0 15px 23px")
+        .text("Requirements from policy frameworks");
+}
+
+function addRiskTypesSection(legend) {
     const riskSection = legend.append("div")
         .attr("class", "legend-section");
 
@@ -533,7 +603,7 @@ function createLegend() {
     Object.entries(colorMap).forEach(([type, color]) => {
         const item = riskSection.append("div")
             .attr("class", "legend-item")
-            .style("margin-left", "20px") // Add indentation
+            .style("margin-left", "20px")
             .on("change", (event) => toggleRiskType(type, event));
 
         item.append("input")
@@ -549,7 +619,6 @@ function createLegend() {
             .text(type);
     });
 }
-
 
 function toggleRiskType(type, event) {
     // Use the event's target directly instead of querying for it
@@ -579,6 +648,8 @@ function updateVisibility() {
     currentNodeGroup.style("opacity", d => {
         if (d.type === 'risk') {
             return visibleNodeTypes.has('risk') && visibleRiskTypes.has(d.riskType) ? 1 : 0.05;
+        } else if (d.type === 'policy') {
+            return visibleNodeTypes.has('policy') ? 1 : 0.1;
         } else {
             return visibleNodeTypes.has('control') ? 1 : 0.1;
         }
@@ -624,7 +695,7 @@ function getTooltipContent(d) {
                         <div class="type">Number of Mitigating Controls: ${mitigatingControls}</div>
                         <div class="description-label">Description</div>
                         <div class="description">${d.description}</div>`;
-    } else {
+    } else if (d.type === 'control') {
         // Get all connected risks and their types
         const connectedRisks = currentLinks
             .filter(l => l.target === d)
@@ -653,6 +724,11 @@ function getTooltipContent(d) {
                         </div>
                         <div class="description-label">Description</div>
                         <div class="description">${d.description}</div>`;
+    } else if (d.type === 'policy') {
+        return `<h3>${d.id}</h3>
+                <div class="type">Regulation: ${d.regulation}</div>
+                <div class="description-label">Requirement</div>
+                <div class="description">${d.requirement}</div>`;
     }
 }
 
@@ -784,11 +860,12 @@ window.addEventListener('load', initializeGraph);
 
 // Add these new functions at the end of the script section
 function initializeSidePanels(data) {
-    const { riskData, controlData } = data;
+    const { riskData, controlData, policyData } = data;
 
     // Populate tables
     populateControlsTable(controlData);
     populateRisksTable(riskData);
+    populatePolicyTable(policyData);
 
     // Add click handlers for panel tabs
     document.querySelectorAll('.panel-tab').forEach(tab => {
@@ -933,6 +1010,25 @@ function populateRisksTable(riskData) {
                         </span>
                     </td>
                     <td>${risk.description}</td>
+                </tr>
+            `).join('');
+
+    // Add click handlers to rows
+    tbody.querySelectorAll('.clickable-row').forEach(row => {
+        row.addEventListener('click', function () {
+            const nodeId = this.dataset.nodeId;
+            highlightAndCenterNode(nodeId);
+        });
+    });
+}
+
+function populatePolicyTable(policyData) {
+    const tbody = document.getElementById('policy-table-body');
+    tbody.innerHTML = policyData.map(policy => `
+                <tr class="clickable-row" data-node-id="${policy.id}">
+                    <td>${policy.id}</td>
+                    <td>${policy.regulation}</td>
+                    <td>${policy.requirement}</td>
                 </tr>
             `).join('');
 

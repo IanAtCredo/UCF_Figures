@@ -109,19 +109,51 @@ function processControlLibrary(content) {
     return processedControls;
 }
 
+// Process policy requirements
+function processPolicyRequirements(content) {
+    const policies = parseCSV(content);
+
+    const processedPolicies = policies
+        .filter(policy => {
+            const isValid = policy['Policy Req Key'] && policy['Regulation'] && policy['Policy Requirement'];
+            return isValid;
+        })
+        .map(policy => {
+            const relatedControls = parseRelatedControls(policy['Related Control IDs']);
+
+            return {
+                id: policy['Policy Req Key'],
+                regulation: policy['Regulation'],
+                requirement: policy['Policy Requirement'],
+                relatedControls
+            };
+        });
+
+    return processedPolicies;
+}
+
 // Extract relationships
-function extractRelationships(risks) {
+function extractRelationships(risks, policies) {
     const relationships = [];
 
+    // Add risk-control relationships
     risks.forEach(risk => {
-        if (!risk.relatedControls || risk.relatedControls.length === 0) {
-            return;
-        }
-
         risk.relatedControls.forEach(controlId => {
             relationships.push({
                 source: risk.id,
-                target: controlId
+                target: controlId,
+                type: 'risk'  // Mark as risk relationship
+            });
+        });
+    });
+
+    // Add policy-control relationships
+    policies.forEach(policy => {
+        policy.relatedControls.forEach(controlId => {
+            relationships.push({
+                source: policy.id,
+                target: controlId,
+                type: 'policy'  // Mark as policy relationship
             });
         });
     });
@@ -132,17 +164,23 @@ function extractRelationships(risks) {
 // Main processing function
 async function processData() {
     try {
+        // Load all data files
+        const [riskResponse, controlResponse, policyResponse] = await Promise.all([
+            fetch('data/risk_library.csv'),
+            fetch('data/control_library.csv'),
+            fetch('data/policy_requirements.csv')
+        ]);
 
-        const riskResponse = await fetch('data/risk_library.csv');
-        const controlResponse = await fetch('data/control_library.csv');
-
-        const riskContent = await riskResponse.text();
-        const controlContent = await controlResponse.text();
-
+        const [riskContent, controlContent, policyContent] = await Promise.all([
+            riskResponse.text(),
+            controlResponse.text(),
+            policyResponse.text()
+        ]);
 
         const riskData = processRiskLibrary(riskContent);
         const controlData = processControlLibrary(controlContent);
-        const relationships = extractRelationships(riskData);
+        const policyData = processPolicyRequirements(policyContent);
+        const relationships = extractRelationships(riskData, policyData);
 
         // Create a graph structure for inspection
         const graph = {
@@ -156,24 +194,28 @@ async function processData() {
                 ...controlData.map(c => ({
                     id: c.id,
                     type: 'control'
+                })),
+                ...policyData.map(p => ({
+                    id: p.id,
+                    type: 'policy',
+                    regulation: p.regulation
                 }))
             ],
-            links: relationships.map(r => ({
-                source: r.source,
-                target: r.target
-            }))
+            links: relationships
         };
 
         console.log('Graph structure:', {
             totalNodes: graph.nodes.length,
             riskNodes: graph.nodes.filter(n => n.type === 'risk').length,
             controlNodes: graph.nodes.filter(n => n.type === 'control').length,
+            policyNodes: graph.nodes.filter(n => n.type === 'policy').length,
             links: graph.links.length
         });
 
         return {
             riskData,
             controlData,
+            policyData,
             relationships
         };
     } catch (error) {
@@ -188,11 +230,21 @@ RISK-002,Operational,Another test scenario,"CREDO-003"
 INVALID-RISK,,Empty description,
 RISK-003,Financial,Third scenario,"CREDO-001\n- CREDO-004\n- CREDO-005"`;
 
+const testPolicyCSV = `Policy Req Key,Regulation,Policy Requirement,Related Control IDs
+POL-001,NIST,Data encryption requirement,"CREDO-001\n- CREDO-002"
+POL-002,ISO27001,Access control policy,"CREDO-003"
+INVALID-POL,,Empty requirement,
+POL-003,GDPR,Data protection measures,"CREDO-001\n- CREDO-004"`;
+
 // Add this test function
 function runTests() {
     console.log('=== Testing Risk Library Processing ===');
     const processedRisks = processRiskLibrary(testRiskCSV);
     console.log('\nFinal processed risks:', JSON.stringify(processedRisks, null, 2));
+
+    console.log('\n=== Testing Policy Requirements Processing ===');
+    const processedPolicies = processPolicyRequirements(testPolicyCSV);
+    console.log('\nFinal processed policies:', JSON.stringify(processedPolicies, null, 2));
 }
 
 // Call the test function

@@ -37,11 +37,15 @@
 }
 
 #controls-panel .panel-tab {
-    top: 20%;
+    top: 40%;
 }
 
 #risks-panel .panel-tab {
-    top: 40%;
+    top: 20%;
+}
+
+#policy-panel .panel-tab {
+    top: 60%;
 }
 
 .panel-tab:hover {

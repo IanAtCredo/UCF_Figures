@@ -1,0 +1,6 @@
+Regulation,Policy Req Key,Policy Requirement,Citation,Related Controls,Related Control IDs,Formula for how Controls meet requirement
+Colorado AI Act,CO-DEPLOYER.C1,Deployers of high-risk AI systems must implement a risk management policy and program.,Section 6-1-1703.2,"Establish and apply fairness testing and validation framework, Establish and apply performance testing and validation framework","- CREDO-012
+- CREDO-014",
+Colorado AI Act,CO-DEPLOYER.C2,Deployers of high-risk AI systems must complete an impact assessment.,Section 6-1-1703.3,Establish societal impact assessment framework,- CREDO-035,
+Colorado AI Act,CO-DEPLOYER.C3,"Deployers, or third parties contracted by the deployer, must review the deployment of the deployed high-risk AI system to ensure that the system is not causing algorithmic discrimination.",Section 6-1-1703.3,Implement fairness monitoring and remediation system,- CREDO-015,
+Colorado AI Act,CO-DEPLOYER.C5,Deployers of high-risk AI systems that make consequential decisions adverse to consumers must provide an opportunity to appeal an adverse consequential decision.,Section 6-1-1703.4,Establish user rights and recourse framework,- CREDO-028,
