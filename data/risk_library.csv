@@ -1,5 +1,6 @@
 Risk Scenario,Risk Type,Description,Related Controls,Other Names,Citations
-Lack of training data transparency,Explainability & Transparency,"Without accurate documentation on how a model's data was collected, curated, and used to train a model, it may be harder to satisfactorily explain the behavior of the model with respect to the data. Data provenance issues may also increase legal risks (e.g., intellectual property infringement).",- CREDO-009,,
+Lack of training data transparency,Explainability & Transparency,"Without accurate documentation on how a model's data was collected, curated, and used to train a model, it may be harder to satisfactorily explain the behavior of the model with respect to the data. Data provenance issues may also increase legal risks (e.g., intellectual property infringement).","- CREDO-009
+- CREDO-039",,
 Lack of inference data transparency,Explainability & Transparency,Lack of inference data transparency: Insufficient visibility into data sources used during model inference,"- CREDO-010
 - CREDO-011",,
 Inadequate observability,Explainability & Transparency,"The AI system may lack sufficient logging or traceability features, making it difficult to monitor or audit its decision-making process after the fact.",- CREDO-010,- Lack of transparency or interpretability (The AI Risk Repository),"- Slattery, P., Saeri, A. K., Grundy, E. A., Graham, J., Noetel, M., Uuk, R., ... & Thompson, N. (2024). The AI Risk Repository: A Comprehensive Meta-Review, Database, and Taxonomy of Risks From Artificial Intelligence. arXiv preprint arXiv:2408.12622."
@@ -78,8 +79,10 @@ Over- or under-reliance and unsafe use,Human-AI Interaction,"Users may inappropr
 - NIST. ""Artificial Intelligence Risk Management Framework: Generative Artificial Intelligence Profile."" (2024).
 - IBM. (2024). AI Risk Atlas. Retrieved [October 17, 2024], from https://www.ibm.com/docs/en/watsonx/saas?topic=ai-risk-atlas"
 Inadequate AI literacy and communication,Human-AI Interaction,"The AI system's capabilities, limitations, and appropriate use cases may be insufficiently understood or communicated within the organization, potentially resulting in ineffective implementation or failure to achieve desired outcomes.","- CREDO-009
+- CREDO-025
 - CREDO-029",,
-AI deception,Human-AI Interaction,"The AI system may misrepresent its own capabilities or limitations, potentially leading to misplaced trust or inappropriate use.",- CREDO-010,,
+AI deception,Human-AI Interaction,"The AI system may misrepresent its own capabilities or limitations, potentially leading to misplaced trust or inappropriate use.","- CREDO-010
+- CREDO-025",,
 Environmental harm,Environmental Harm,The AI system's development and operation may cause environmental harm through energy consumption of data centers or the materials and carbon footprints associated with AI hardware.,"- CREDO-032
 - CREDO-036","- Environmental impacts (NIST)
 - Impact on the environment (IBM AI risk atlas)","- Slattery, P., Saeri, A. K., Grundy, E. A., Graham, J., Noetel, M., Uuk, R., ... & Thompson, N. (2024). The AI Risk Repository: A Comprehensive Meta-Review, Database, and Taxonomy of Risks From Artificial Intelligence. arXiv preprint arXiv:2408.12622.
@@ -107,7 +110,10 @@ Power centralization and unfair distribution of benefits,Societal Impact,"The AI
 - CREDO-036",,"- Slattery, P., Saeri, A. K., Grundy, E. A., Graham, J., Noetel, M., Uuk, R., ... & Thompson, N. (2024). The AI Risk Repository: A Comprehensive Meta-Review, Database, and Taxonomy of Risks From Artificial Intelligence. arXiv preprint arXiv:2408.12622."
 Competitive dynamics,Societal Impact,"The AI system's rapid development, deployment, and application in a competitive ""race"" by developers or state-like actors to maximize strategic or economic advantage may increase the risk of releasing unsafe and error-prone systems.",- CREDO-036,,"- Slattery, P., Saeri, A. K., Grundy, E. A., Graham, J., Noetel, M., Uuk, R., ... & Thompson, N. (2024). The AI Risk Repository: A Comprehensive Meta-Review, Database, and Taxonomy of Risks From Artificial Intelligence. arXiv preprint arXiv:2408.12622."
 Governance failures,Societal Impact,"The AI system may outpace regulatory frameworks and oversight mechanisms, potentially leading to ineffective governance and the inability to manage AI risks appropriately.","- CREDO-029
-- CREDO-036",,"- Slattery, P., Saeri, A. K., Grundy, E. A., Graham, J., Noetel, M., Uuk, R., ... & Thompson, N. (2024). The AI Risk Repository: A Comprehensive Meta-Review, Database, and Taxonomy of Risks From Artificial Intelligence. arXiv preprint arXiv:2408.12622."
+- CREDO-036
+- CREDO-040
+- CREDO-041
+- CREDO-042",,"- Slattery, P., Saeri, A. K., Grundy, E. A., Graham, J., Noetel, M., Uuk, R., ... & Thompson, N. (2024). The AI Risk Repository: A Comprehensive Meta-Review, Database, and Taxonomy of Risks From Artificial Intelligence. arXiv preprint arXiv:2408.12622."
 AI pursuing its own goals in conflict with human goals or values,AI Agency,"The AI system may act in conflict with ethical standards or human goals or values, especially those of its designers or users, potentially using dangerous capabilities such as manipulation, deception, or situational awareness to seek power, self-proliferate, or achieve other misaligned goals.","- CREDO-017
 - CREDO-021
 - CREDO-022
