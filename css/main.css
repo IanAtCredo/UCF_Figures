@@ -23,7 +23,7 @@ body {
     height: 100vh;
     margin: 0;
     padding: 0;
-    background: #f9f9f9 url('../images/background.png') center/cover no-repeat;
+    background: linear-gradient(135deg, #f9f9f9 0%, #ffb0d4 100%);
     background-position: 25% 50%;
 }
 
@@ -37,13 +37,13 @@ body {
     stroke-width: 0;
 }
 
-.control-node {
+.CONTROL-node {
     fill: #fff;
     stroke: none;
     stroke-width: 2px;
 }
 
-.node text.control-label {
+.node text.CONTROL-label {
     font-family: Arial, sans-serif;
     font-size: 26px;
     font-weight: normal;
@@ -94,7 +94,7 @@ body {
     text-align: center;
 }
 
-.control-arc {
+.CONTROL-arc {
     fill: none;
 }
 

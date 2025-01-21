@@ -196,7 +196,7 @@ function changeLayout() {
             node.select("circle")
                 .attr("r", d => d.radius);
             // Update control label
-            node.select("text.control-label")
+            node.select("text.CONTROL-label")
                 .text(d => getControlNumber(d.id));
         }
     });
@@ -364,11 +364,11 @@ async function initializeGraph() {
             // Add circle for controls
             node.append("circle")
                 .attr("r", d => d.radius)
-                .attr("class", "control-node");
+                .attr("class", "CONTROL-node");
 
             // Add control number inside circle
             node.append("text")
-                .attr("class", "control-label")
+                .attr("class", "CONTROL-label")
                 .text(d => getControlNumber(d.id));
 
             // Add arcs for risk type distribution
@@ -506,8 +506,10 @@ function createLegend() {
         .style("text-align", "left")
         .style("margin-bottom", "15px")
         .append("img")
-        .attr("src", "images/Credo_AI_Logo.png")
-        .attr("alt", "Credo AI Logo")
+        .attr("src", "images/Logo.png")
+        .on("error", function () {
+            d3.select(this).remove();
+        })
         .style("width", "50%");
 
     // Add legend title
@@ -777,7 +779,7 @@ function updateControlArcs(node) {
     const arcs = createControlArcs(node, connections);
 
     // Create or update arcs
-    const arcGroup = d3.select(this).selectAll(".control-arc")
+    const arcGroup = d3.select(this).selectAll(".CONTROL-arc")
         .data(arcs);
 
     // Remove old arcs
@@ -791,7 +793,7 @@ function updateControlArcs(node) {
     arcGroup.enter()
         .append("path")
         .merge(arcGroup)
-        .attr("class", "control-arc")
+        .attr("class", "CONTROL-arc")
         .attr("d", d => arcGenerator(d))
         .style("stroke", d => d.color)
         .style("stroke-width", node.radius * 0.15);

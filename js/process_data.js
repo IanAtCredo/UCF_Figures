@@ -64,7 +64,7 @@ function parseRelatedControls(controlsStr) {
         .map(line => line.trim())
         // Remove the leading hyphen if present
         .map(line => line.replace(/^-\s*/, ''))
-        .filter(c => c && c.startsWith('CREDO-'));
+        .filter(c => c && c.startsWith('CONTROL-'));
 }
 
 // Process risk library
@@ -97,7 +97,7 @@ function processControlLibrary(content) {
 
     const processedControls = controls
         .filter(control => {
-            const isValid = control['Control ID'] && control['Control ID'].startsWith('CREDO-');
+            const isValid = control['Control ID'] && control['Control ID'].startsWith('CONTROL-');
             return isValid;
         })
         .map(control => ({
@@ -225,16 +225,16 @@ async function processData() {
 }
 
 const testRiskCSV = `Risk Scenario,Risk Type,Description,Related Controls
-RISK-001,Strategic,A test risk scenario,"CREDO-001\n- CREDO-002"
-RISK-002,Operational,Another test scenario,"CREDO-003"
+RISK-001,Strategic,A test risk scenario,"CONTROL-001\n- CONTROL-002"
+RISK-002,Operational,Another test scenario,"CONTROL-003"
 INVALID-RISK,,Empty description,
-RISK-003,Financial,Third scenario,"CREDO-001\n- CREDO-004\n- CREDO-005"`;
+RISK-003,Financial,Third scenario,"CONTROL-001\n- CONTROL-004\n- CONTROL-005"`;
 
 const testPolicyCSV = `Policy Req Key,Regulation,Policy Requirement,Related Control IDs
-POL-001,NIST,Data encryption requirement,"CREDO-001\n- CREDO-002"
-POL-002,ISO27001,Access control policy,"CREDO-003"
+POL-001,NIST,Data encryption requirement,"CONTROL-001\n- CONTROL-002"
+POL-002,ISO27001,Access control policy,"CONTROL-003"
 INVALID-POL,,Empty requirement,
-POL-003,GDPR,Data protection measures,"CREDO-001\n- CREDO-004"`;
+POL-003,GDPR,Data protection measures,"CONTROL-001\n- CONTROL-004"`;
 
 // Add this test function
 function runTests() {

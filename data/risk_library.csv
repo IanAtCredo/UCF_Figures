@@ -1,123 +1,123 @@
 Risk Scenario,Risk Type,Description,Related Controls,Other Names,Citations
-Lack of training data transparency,Explainability & Transparency,"Without accurate documentation on how a model's data was collected, curated, and used to train a model, it may be harder to satisfactorily explain the behavior of the model with respect to the data. Data provenance issues may also increase legal risks (e.g., intellectual property infringement).","- CREDO-009
-- CREDO-039",,
-Lack of inference data transparency,Explainability & Transparency,Lack of inference data transparency: Insufficient visibility into data sources used during model inference,"- CREDO-010
-- CREDO-011",,
-Inadequate observability,Explainability & Transparency,"The AI system may lack sufficient logging or traceability features, making it difficult to monitor or audit its decision-making process after the fact.",- CREDO-010,- Lack of transparency or interpretability (The AI Risk Repository),"- Slattery, P., Saeri, A. K., Grundy, E. A., Graham, J., Noetel, M., Uuk, R., ... & Thompson, N. (2024). The AI Risk Repository: A Comprehensive Meta-Review, Database, and Taxonomy of Risks From Artificial Intelligence. arXiv preprint arXiv:2408.12622."
-Black box decision-making,Explainability & Transparency,"The AI system's decision-making process may be opaque, even when the architecture is known, making it difficult to understand how the system arrives at its outputs or recommendations.","- CREDO-011
-- CREDO-037","- Lack of transparency or interpretability (The AI Risk Repository)
+Lack of training data transparency,Explainability & Transparency,"Without accurate documentation on how a model's data was collected, curated, and used to train a model, it may be harder to satisfactorily explain the behavior of the model with respect to the data. Data provenance issues may also increase legal risks (e.g., intellectual property infringement).","- CONTROL-009
+- CONTROL-039",,
+Lack of inference data transparency,Explainability & Transparency,Lack of inference data transparency: Insufficient visibility into data sources used during model inference,"- CONTROL-010
+- CONTROL-011",,
+Inadequate observability,Explainability & Transparency,"The AI system may lack sufficient logging or traceability features, making it difficult to monitor or audit its decision-making process after the fact.",- CONTROL-010,- Lack of transparency or interpretability (The AI Risk Repository),"- Slattery, P., Saeri, A. K., Grundy, E. A., Graham, J., Noetel, M., Uuk, R., ... & Thompson, N. (2024). The AI Risk Repository: A Comprehensive Meta-Review, Database, and Taxonomy of Risks From Artificial Intelligence. arXiv preprint arXiv:2408.12622."
+Black box decision-making,Explainability & Transparency,"The AI system's decision-making process may be opaque, even when the architecture is known, making it difficult to understand how the system arrives at its outputs or recommendations.","- CONTROL-011
+- CONTROL-037","- Lack of transparency or interpretability (The AI Risk Repository)
 - Unexplainable output (IBM AI risk atlas)","- Slattery, P., Saeri, A. K., Grundy, E. A., Graham, J., Noetel, M., Uuk, R., ... & Thompson, N. (2024). The AI Risk Repository: A Comprehensive Meta-Review, Database, and Taxonomy of Risks From Artificial Intelligence. arXiv preprint arXiv:2408.12622.
 - IBM. (2024). AI Risk Atlas. Retrieved [October 17, 2024], from https://www.ibm.com/docs/en/watsonx/saas?topic=ai-risk-atlas"
-Stereotype perpetuation,Fairness & Bias,"The AI system's outputs may explicitly reflect or reinforce harmful stereotypes, prejudices, or biased characterizations of specific groups.","- CREDO-014
-- CREDO-015
-- CREDO-016
-- CREDO-028","- Unfair discrimination and misrepresentation (The AI Risk Repository) 
+Stereotype perpetuation,Fairness & Bias,"The AI system's outputs may explicitly reflect or reinforce harmful stereotypes, prejudices, or biased characterizations of specific groups.","- CONTROL-014
+- CONTROL-015
+- CONTROL-016
+- CONTROL-028","- Unfair discrimination and misrepresentation (The AI Risk Repository) 
 - Harmful Bias and Homogenization (NIST)
 - Output bias(IBM AI risk atlas)","- Slattery, P., Saeri, A. K., Grundy, E. A., Graham, J., Noetel, M., Uuk, R., ... & Thompson, N. (2024). The AI Risk Repository: A Comprehensive Meta-Review, Database, and Taxonomy of Risks From Artificial Intelligence. arXiv preprint arXiv:2408.12622.
 - IBM. (2024). AI Risk Atlas. Retrieved [October 17, 2024], from https://www.ibm.com/docs/en/watsonx/saas?topic=ai-risk-atlas
 
 "
-Unequal access to AI benefits,Fairness & Bias,"The AI system's benefits may not be equally accessible to all users, potentially resulting in reduced advantages for those with limited access. Accessibility may be affected by physical abilities, cognitive abilities, language, or technological access.","- CREDO-014
-- CREDO-015
-- CREDO-016
-- CREDO-028",,"- European Commission: Directorate-General for Communications Networks, Content and Technology, Ethics guidelines for trustworthy AI, Publications Office, 2019, https://data.europa.eu/doi/10.2759/346720"
-Toxic content,Harmful Content,"The AI system may generate or respond with hateful content, such as racist, sexist, or otherwise offensive material.","- CREDO-017
-- CREDO-018
-- CREDO-019","- Toxic content (The AI Risk Repository)
+Unequal access to AI benefits,Fairness & Bias,"The AI system's benefits may not be equally accessible to all users, potentially resulting in reduced advantages for those with limited access. Accessibility may be affected by physical abilities, cognitive abilities, language, or technological access.","- CONTROL-014
+- CONTROL-015
+- CONTROL-016
+- CONTROL-028",,"- European Commission: Directorate-General for Communications Networks, Content and Technology, Ethics guidelines for trustworthy AI, Publications Office, 2019, https://data.europa.eu/doi/10.2759/346720"
+Toxic content,Harmful Content,"The AI system may generate or respond with hateful content, such as racist, sexist, or otherwise offensive material.","- CONTROL-017
+- CONTROL-018
+- CONTROL-019","- Toxic content (The AI Risk Repository)
 - Toxic Output (IBM AI risk atlas)","- Slattery, P., Saeri, A. K., Grundy, E. A., Graham, J., Noetel, M., Uuk, R., ... & Thompson, N. (2024). The AI Risk Repository: A Comprehensive Meta-Review, Database, and Taxonomy of Risks From Artificial Intelligence. arXiv preprint arXiv:2408.12622.
 - IBM. (2024). AI Risk Atlas. Retrieved [October 17, 2024], from https://www.ibm.com/docs/en/watsonx/saas?topic=ai-risk-atlas
 "
-Obscene and sexually abusive content,Harmful Content,"The AI system may generate or disseminate content that is obscene, degrading, or sexually abusive, including child sexual abuse material (CSAM) or non-consensual intimate images (NCII).","- CREDO-017
-- CREDO-018
-- CREDO-019","- Obscene, degrading, and/or abusive content (NIST) 
+Obscene and sexually abusive content,Harmful Content,"The AI system may generate or disseminate content that is obscene, degrading, or sexually abusive, including child sexual abuse material (CSAM) or non-consensual intimate images (NCII).","- CONTROL-017
+- CONTROL-018
+- CONTROL-019","- Obscene, degrading, and/or abusive content (NIST) 
 - Toxic content (The AI Risk Repository)","- Slattery, P., Saeri, A. K., Grundy, E. A., Graham, J., Noetel, M., Uuk, R., ... & Thompson, N. (2024). The AI Risk Repository: A Comprehensive Meta-Review, Database, and Taxonomy of Risks From Artificial Intelligence. arXiv preprint arXiv:2408.12622.
 - NIST. ""Artificial Intelligence Risk Management Framework: Generative Artificial Intelligence Profile."" (2024)."
-Dangerous or violent content,Harmful Content,The AI system may produce content that incites violence or provides instructions for committing crimes.,"- CREDO-017
-- CREDO-018
-- CREDO-019",- Harmful Output (IBM AI risk atlas),"- IBM. (2024). AI Risk Atlas. Retrieved [October 17, 2024], from https://www.ibm.com/docs/en/watsonx/saas?topic=ai-risk-atlas"
-"Fraud, scams, and targeted manipulation",Malicious Use,"The AI system may be exploited to facilitate fraudulent activities, scams, or targeted manipulation, including generating deepfakes and enhancing phishing attacks.","- CREDO-017
-- CREDO-018
-- CREDO-019
-- CREDO-022
-- CREDO-023",,
-"Cyberattacks, weapon development, and mass harm",Malicious Use,"The AI system may be misused for developing malicious software, lethal autonomous weapons, or planning large-scale harmful activities.","- CREDO-017
-- CREDO-018
-- CREDO-019
-- CREDO-021
-- CREDO-022
-- CREDO-023","- CBRN information or capabilities (NIST)
+Dangerous or violent content,Harmful Content,The AI system may produce content that incites violence or provides instructions for committing crimes.,"- CONTROL-017
+- CONTROL-018
+- CONTROL-019",- Harmful Output (IBM AI risk atlas),"- IBM. (2024). AI Risk Atlas. Retrieved [October 17, 2024], from https://www.ibm.com/docs/en/watsonx/saas?topic=ai-risk-atlas"
+"Fraud, scams, and targeted manipulation",Malicious Use,"The AI system may be exploited to facilitate fraudulent activities, scams, or targeted manipulation, including generating deepfakes and enhancing phishing attacks.","- CONTROL-017
+- CONTROL-018
+- CONTROL-019
+- CONTROL-022
+- CONTROL-023",,
+"Cyberattacks, weapon development, and mass harm",Malicious Use,"The AI system may be misused for developing malicious software, lethal autonomous weapons, or planning large-scale harmful activities.","- CONTROL-017
+- CONTROL-018
+- CONTROL-019
+- CONTROL-021
+- CONTROL-022
+- CONTROL-023","- CBRN information or capabilities (NIST)
 - Dangerous use (IBM AI risk repository)","- NIST. ""Artificial Intelligence Risk Management Framework: Generative Artificial Intelligence Profile."" (2024).
 - IBM. (2024). AI Risk Atlas. Retrieved [October 17, 2024], from https://www.ibm.com/docs/en/watsonx/saas?topic=ai-risk-atlas"
-Coordinated influence operations,Malicious Use,Coordinated influence operations: Large-scale manipulation and disinformation campaigns,"- CREDO-021
-- CREDO-022
-- CREDO-023","- Disinformation, surveillance, and influence at scale (The AI Risk Repository) 
+Coordinated influence operations,Malicious Use,Coordinated influence operations: Large-scale manipulation and disinformation campaigns,"- CONTROL-021
+- CONTROL-022
+- CONTROL-023","- Disinformation, surveillance, and influence at scale (The AI Risk Repository) 
 - Information Integrity (NIST)
 - Spreading disinformation (IBM AI risk repository)","- Slattery, P., Saeri, A. K., Grundy, E. A., Graham, J., Noetel, M., Uuk, R., ... & Thompson, N. (2024). The AI Risk Repository: A Comprehensive Meta-Review, Database, and Taxonomy of Risks From Artificial Intelligence. arXiv preprint arXiv:2408.12622.
 - IBM. (2024). AI Risk Atlas. Retrieved [October 17, 2024], from https://www.ibm.com/docs/en/watsonx/saas?topic=ai-risk-atlas"
-Mass surveillance and privacy attacks,Malicious Use,Mass surveillance and privacy attacks: Unauthorized monitoring and privacy violation at scale,"- CREDO-021
-- CREDO-022
-- CREDO-023","- Disinformation, surveillance, and influence at scale (The AI Risk Repository) ","- Slattery, P., Saeri, A. K., Grundy, E. A., Graham, J., Noetel, M., Uuk, R., ... & Thompson, N. (2024). The AI Risk Repository: A Comprehensive Meta-Review, Database, and Taxonomy of Risks From Artificial Intelligence. arXiv preprint arXiv:2408.12622.
+Mass surveillance and privacy attacks,Malicious Use,Mass surveillance and privacy attacks: Unauthorized monitoring and privacy violation at scale,"- CONTROL-021
+- CONTROL-022
+- CONTROL-023","- Disinformation, surveillance, and influence at scale (The AI Risk Repository) ","- Slattery, P., Saeri, A. K., Grundy, E. A., Graham, J., Noetel, M., Uuk, R., ... & Thompson, N. (2024). The AI Risk Repository: A Comprehensive Meta-Review, Database, and Taxonomy of Risks From Artificial Intelligence. arXiv preprint arXiv:2408.12622.
 - IBM. (2024). AI Risk Atlas. Retrieved [October 17, 2024], from https://www.ibm.com/docs/en/watsonx/saas?topic=ai-risk-atlas"
-Compromised personally identifiable information,Privacy,"The AI system may expose personally identifiable information (PII), either inadvertently or due to adversarial inputs, derived from training data, accessible data, or inferences. PII is any data that can be used to directly identify or contact a specific individual, either alone or in combination with other information.","- CREDO-001
-- CREDO-023
-- CREDO-026","- Compromise of privacy by obtaining, leaking, or correctly inferring sensitive information (The AI Risk Repository) 
+Compromised personally identifiable information,Privacy,"The AI system may expose personally identifiable information (PII), either inadvertently or due to adversarial inputs, derived from training data, accessible data, or inferences. PII is any data that can be used to directly identify or contact a specific individual, either alone or in combination with other information.","- CONTROL-001
+- CONTROL-023
+- CONTROL-026","- Compromise of privacy by obtaining, leaking, or correctly inferring sensitive information (The AI Risk Repository) 
 - Data privacy (NIST)
 - Exposing personal information (IBM AI risk atlas)","- Slattery, P., Saeri, A. K., Grundy, E. A., Graham, J., Noetel, M., Uuk, R., ... & Thompson, N. (2024). The AI Risk Repository: A Comprehensive Meta-Review, Database, and Taxonomy of Risks From Artificial Intelligence. arXiv preprint arXiv:2408.12622.
 - NIST. ""Artificial Intelligence Risk Management Framework: Generative Artificial Intelligence Profile."" (2024).
 - IBM. (2024). AI Risk Atlas. Retrieved [October 17, 2024], from https://www.ibm.com/docs/en/watsonx/saas?topic=ai-risk-atlas"
-Compromised sensitive information,Privacy,"The AI system may expose personally sensitive information, either inadvertently or due to adversarial inputs, derived from training data, accessible data, or inferences. Sensitive personal data is information that, while not necessarily identifying an individual, could cause harm, discrimination, or distress to a person if exposed, including details about their health, finances, beliefs, behaviors, relationships, and private life circumstances.","- CREDO-001
-- CREDO-026","- Compromise of privacy by obtaining, leaking, or correctly inferring sensitive information (The AI Risk Repository) 
+Compromised sensitive information,Privacy,"The AI system may expose personally sensitive information, either inadvertently or due to adversarial inputs, derived from training data, accessible data, or inferences. Sensitive personal data is information that, while not necessarily identifying an individual, could cause harm, discrimination, or distress to a person if exposed, including details about their health, finances, beliefs, behaviors, relationships, and private life circumstances.","- CONTROL-001
+- CONTROL-026","- Compromise of privacy by obtaining, leaking, or correctly inferring sensitive information (The AI Risk Repository) 
 - Data privacy (NIST)
 - Exposing personal information (IBM AI risk atlas)","- Slattery, P., Saeri, A. K., Grundy, E. A., Graham, J., Noetel, M., Uuk, R., ... & Thompson, N. (2024). The AI Risk Repository: A Comprehensive Meta-Review, Database, and Taxonomy of Risks From Artificial Intelligence. arXiv preprint arXiv:2408.12622.
 - NIST. ""Artificial Intelligence Risk Management Framework: Generative Artificial Intelligence Profile."" (2024).
 - IBM. (2024). AI Risk Atlas. Retrieved [October 17, 2024], from https://www.ibm.com/docs/en/watsonx/saas?topic=ai-risk-atlas"
-Over- or under-reliance and unsafe use,Human-AI Interaction,"Users may inappropriately rely on the AI system for critical decisions or tasks beyond its capabilities, or fail to put trust in AI systems when they should, potentially leading to errors or safety issues.","- CREDO-009
-- CREDO-011
-- CREDO-028
-- CREDO-029","- Human-AI configuration (NIST)
+Over- or under-reliance and unsafe use,Human-AI Interaction,"Users may inappropriately rely on the AI system for critical decisions or tasks beyond its capabilities, or fail to put trust in AI systems when they should, potentially leading to errors or safety issues.","- CONTROL-009
+- CONTROL-011
+- CONTROL-028
+- CONTROL-029","- Human-AI configuration (NIST)
 - Over- or Under-reliance (IBM AI risk atlas)","- Slattery, P., Saeri, A. K., Grundy, E. A., Graham, J., Noetel, M., Uuk, R., ... & Thompson, N. (2024). The AI Risk Repository: A Comprehensive Meta-Review, Database, and Taxonomy of Risks From Artificial Intelligence. arXiv preprint arXiv:2408.12622.
 - NIST. ""Artificial Intelligence Risk Management Framework: Generative Artificial Intelligence Profile."" (2024).
 - IBM. (2024). AI Risk Atlas. Retrieved [October 17, 2024], from https://www.ibm.com/docs/en/watsonx/saas?topic=ai-risk-atlas"
-Inadequate AI literacy and communication,Human-AI Interaction,"The AI system's capabilities, limitations, and appropriate use cases may be insufficiently understood or communicated within the organization, potentially resulting in ineffective implementation or failure to achieve desired outcomes.","- CREDO-009
-- CREDO-025
-- CREDO-029",,
-AI deception,Human-AI Interaction,"The AI system may misrepresent its own capabilities or limitations, potentially leading to misplaced trust or inappropriate use.","- CREDO-010
-- CREDO-025",,
-Environmental harm,Environmental Harm,The AI system's development and operation may cause environmental harm through energy consumption of data centers or the materials and carbon footprints associated with AI hardware.,"- CREDO-032
-- CREDO-036","- Environmental impacts (NIST)
+Inadequate AI literacy and communication,Human-AI Interaction,"The AI system's capabilities, limitations, and appropriate use cases may be insufficiently understood or communicated within the organization, potentially resulting in ineffective implementation or failure to achieve desired outcomes.","- CONTROL-009
+- CONTROL-025
+- CONTROL-029",,
+AI deception,Human-AI Interaction,"The AI system may misrepresent its own capabilities or limitations, potentially leading to misplaced trust or inappropriate use.","- CONTROL-010
+- CONTROL-025",,
+Environmental harm,Environmental Harm,The AI system's development and operation may cause environmental harm through energy consumption of data centers or the materials and carbon footprints associated with AI hardware.,"- CONTROL-032
+- CONTROL-036","- Environmental impacts (NIST)
 - Impact on the environment (IBM AI risk atlas)","- Slattery, P., Saeri, A. K., Grundy, E. A., Graham, J., Noetel, M., Uuk, R., ... & Thompson, N. (2024). The AI Risk Repository: A Comprehensive Meta-Review, Database, and Taxonomy of Risks From Artificial Intelligence. arXiv preprint arXiv:2408.12622.
 - NIST. ""Artificial Intelligence Risk Management Framework: Generative Artificial Intelligence Profile."" (2024).
 - IBM. (2024). AI Risk Atlas. Retrieved [October 17, 2024], from https://www.ibm.com/docs/en/watsonx/saas?topic=ai-risk-atlas"
-Lack of adequate capabilities,Performance & Robustness,"The AI system may fail to achieve required performance levels due to fundamental technological limitations or insufficient resources, potentially leading to suboptimal or unreliable outcomes.","- CREDO-012
-- CREDO-016","- Lack of capability or robustness (NIST) 
+Lack of adequate capabilities,Performance & Robustness,"The AI system may fail to achieve required performance levels due to fundamental technological limitations or insufficient resources, potentially leading to suboptimal or unreliable outcomes.","- CONTROL-012
+- CONTROL-016","- Lack of capability or robustness (NIST) 
 - AI System Safety, Failures and Limitations (The AI Risk Repository)
 - Poor model accuracy (AI Risk Atlas)","- Slattery, P., Saeri, A. K., Grundy, E. A., Graham, J., Noetel, M., Uuk, R., ... & Thompson, N. (2024). The AI Risk Repository: A Comprehensive Meta-Review, Database, and Taxonomy of Risks From Artificial Intelligence. arXiv preprint arXiv:2408.12622.
 - NIST. ""Artificial Intelligence Risk Management Framework: Generative Artificial Intelligence Profile."" (2024).
 - IBM. (2024). AI Risk Atlas. Retrieved [October 17, 2024], from https://www.ibm.com/docs/en/watsonx/saas?topic=ai-risk-atlas"
-Oversight and evaluation challenges,Performance & Robustness,"The AI system may present difficulties in overseeing or evaluating its models, potentially introducing performance risks in both pre-deployment assessments and ongoing monitoring.","- CREDO-010
-- CREDO-012",,
-Lack of robustness,Performance & Robustness,"The AI system's performance may fail to generalize well to new environments or inputs, potentially leading to unexpected failures or degraded performance in real-world applications.","- CREDO-022
-- CREDO-028","- Lack of capability or robustness (NIST) 
+Oversight and evaluation challenges,Performance & Robustness,"The AI system may present difficulties in overseeing or evaluating its models, potentially introducing performance risks in both pre-deployment assessments and ongoing monitoring.","- CONTROL-010
+- CONTROL-012",,
+Lack of robustness,Performance & Robustness,"The AI system's performance may fail to generalize well to new environments or inputs, potentially leading to unexpected failures or degraded performance in real-world applications.","- CONTROL-022
+- CONTROL-028","- Lack of capability or robustness (NIST) 
 - AI System Safety, Failures and Limitations (The AI Risk Repository)
 - Robustness (AI Risk Atlas)","- Slattery, P., Saeri, A. K., Grundy, E. A., Graham, J., Noetel, M., Uuk, R., ... & Thompson, N. (2024). The AI Risk Repository: A Comprehensive Meta-Review, Database, and Taxonomy of Risks From Artificial Intelligence. arXiv preprint arXiv:2408.12622.
 - NIST. ""Artificial Intelligence Risk Management Framework: Generative Artificial Intelligence Profile."" (2024).
 - IBM. (2024). AI Risk Atlas. Retrieved [October 17, 2024], from https://www.ibm.com/docs/en/watsonx/saas?topic=ai-risk-atlas"
-Increased inequality and decline in employment quality,Societal Impact,"The AI system's widespread use may cause social and economic inequalities by automating jobs, reducing employment quality, or producing exploitative dependencies between workers and their employers.",- CREDO-035,- Impact on jobs (IBM AI risk atlas),"- Slattery, P., Saeri, A. K., Grundy, E. A., Graham, J., Noetel, M., Uuk, R., ... & Thompson, N. (2024). The AI Risk Repository: A Comprehensive Meta-Review, Database, and Taxonomy of Risks From Artificial Intelligence. arXiv preprint arXiv:2408.12622.
+Increased inequality and decline in employment quality,Societal Impact,"The AI system's widespread use may cause social and economic inequalities by automating jobs, reducing employment quality, or producing exploitative dependencies between workers and their employers.",- CONTROL-035,- Impact on jobs (IBM AI risk atlas),"- Slattery, P., Saeri, A. K., Grundy, E. A., Graham, J., Noetel, M., Uuk, R., ... & Thompson, N. (2024). The AI Risk Repository: A Comprehensive Meta-Review, Database, and Taxonomy of Risks From Artificial Intelligence. arXiv preprint arXiv:2408.12622.
 - IBM. (2024). AI Risk Atlas. Retrieved [October 17, 2024], from https://www.ibm.com/docs/en/watsonx/saas?topic=ai-risk-atlas"
-Economic and cultural devaluation of human effort,Societal Impact,"The AI system may create economic or cultural value through reproduction of human innovation or creativity, potentially destabilizing economic and social systems that rely on human effort and leading to reduced appreciation for human skills, disruption of industries, and homogenization of cultural experiences.",- CREDO-035,- Impact on cultural diversity (IBM AI risk atlas),"- Slattery, P., Saeri, A. K., Grundy, E. A., Graham, J., Noetel, M., Uuk, R., ... & Thompson, N. (2024). The AI Risk Repository: A Comprehensive Meta-Review, Database, and Taxonomy of Risks From Artificial Intelligence. arXiv preprint arXiv:2408.12622.
+Economic and cultural devaluation of human effort,Societal Impact,"The AI system may create economic or cultural value through reproduction of human innovation or creativity, potentially destabilizing economic and social systems that rely on human effort and leading to reduced appreciation for human skills, disruption of industries, and homogenization of cultural experiences.",- CONTROL-035,- Impact on cultural diversity (IBM AI risk atlas),"- Slattery, P., Saeri, A. K., Grundy, E. A., Graham, J., Noetel, M., Uuk, R., ... & Thompson, N. (2024). The AI Risk Repository: A Comprehensive Meta-Review, Database, and Taxonomy of Risks From Artificial Intelligence. arXiv preprint arXiv:2408.12622.
 - IBM. (2024). AI Risk Atlas. Retrieved [October 17, 2024], from https://www.ibm.com/docs/en/watsonx/saas?topic=ai-risk-atlas"
-Power centralization and unfair distribution of benefits,Societal Impact,"The AI system may drive concentration of power and resources within certain entities or groups, especially those with access to or ownership of powerful AI systems, potentially leading to inequitable distribution of benefits and increased societal inequality.","- CREDO-035
-- CREDO-036",,"- Slattery, P., Saeri, A. K., Grundy, E. A., Graham, J., Noetel, M., Uuk, R., ... & Thompson, N. (2024). The AI Risk Repository: A Comprehensive Meta-Review, Database, and Taxonomy of Risks From Artificial Intelligence. arXiv preprint arXiv:2408.12622."
-Competitive dynamics,Societal Impact,"The AI system's rapid development, deployment, and application in a competitive ""race"" by developers or state-like actors to maximize strategic or economic advantage may increase the risk of releasing unsafe and error-prone systems.",- CREDO-036,,"- Slattery, P., Saeri, A. K., Grundy, E. A., Graham, J., Noetel, M., Uuk, R., ... & Thompson, N. (2024). The AI Risk Repository: A Comprehensive Meta-Review, Database, and Taxonomy of Risks From Artificial Intelligence. arXiv preprint arXiv:2408.12622."
-Governance failures,Societal Impact,"The AI system may outpace regulatory frameworks and oversight mechanisms, potentially leading to ineffective governance and the inability to manage AI risks appropriately.","- CREDO-029
-- CREDO-036
-- CREDO-040
-- CREDO-041
-- CREDO-042",,"- Slattery, P., Saeri, A. K., Grundy, E. A., Graham, J., Noetel, M., Uuk, R., ... & Thompson, N. (2024). The AI Risk Repository: A Comprehensive Meta-Review, Database, and Taxonomy of Risks From Artificial Intelligence. arXiv preprint arXiv:2408.12622."
-AI pursuing its own goals in conflict with human goals or values,AI Agency,"The AI system may act in conflict with ethical standards or human goals or values, especially those of its designers or users, potentially using dangerous capabilities such as manipulation, deception, or situational awareness to seek power, self-proliferate, or achieve other misaligned goals.","- CREDO-017
-- CREDO-021
-- CREDO-022
-- CREDO-037",,"- Slattery, P., Saeri, A. K., Grundy, E. A., Graham, J., Noetel, M., Uuk, R., ... & Thompson, N. (2024). The AI Risk Repository: A Comprehensive Meta-Review, Database, and Taxonomy of Risks From Artificial Intelligence. arXiv preprint arXiv:2408.12622."
-AI possessing dangerous capabilities,AI Agency,"The AI system may develop, access, or be provided with capabilities that increase its potential to cause mass harm through deception, weapons development and acquisition, persuasion and manipulation, political strategy, cyber-offense, AI development, situational awareness, and self-proliferation.","- CREDO-021
-- CREDO-022
-- CREDO-037",,"- Slattery, P., Saeri, A. K., Grundy, E. A., Graham, J., Noetel, M., Uuk, R., ... & Thompson, N. (2024). The AI Risk Repository: A Comprehensive Meta-Review, Database, and Taxonomy of Risks From Artificial Intelligence. arXiv preprint arXiv:2408.12622."
+Power centralization and unfair distribution of benefits,Societal Impact,"The AI system may drive concentration of power and resources within certain entities or groups, especially those with access to or ownership of powerful AI systems, potentially leading to inequitable distribution of benefits and increased societal inequality.","- CONTROL-035
+- CONTROL-036",,"- Slattery, P., Saeri, A. K., Grundy, E. A., Graham, J., Noetel, M., Uuk, R., ... & Thompson, N. (2024). The AI Risk Repository: A Comprehensive Meta-Review, Database, and Taxonomy of Risks From Artificial Intelligence. arXiv preprint arXiv:2408.12622."
+Competitive dynamics,Societal Impact,"The AI system's rapid development, deployment, and application in a competitive ""race"" by developers or state-like actors to maximize strategic or economic advantage may increase the risk of releasing unsafe and error-prone systems.",- CONTROL-036,,"- Slattery, P., Saeri, A. K., Grundy, E. A., Graham, J., Noetel, M., Uuk, R., ... & Thompson, N. (2024). The AI Risk Repository: A Comprehensive Meta-Review, Database, and Taxonomy of Risks From Artificial Intelligence. arXiv preprint arXiv:2408.12622."
+Governance failures,Societal Impact,"The AI system may outpace regulatory frameworks and oversight mechanisms, potentially leading to ineffective governance and the inability to manage AI risks appropriately.","- CONTROL-029
+- CONTROL-036
+- CONTROL-040
+- CONTROL-041
+- CONTROL-042",,"- Slattery, P., Saeri, A. K., Grundy, E. A., Graham, J., Noetel, M., Uuk, R., ... & Thompson, N. (2024). The AI Risk Repository: A Comprehensive Meta-Review, Database, and Taxonomy of Risks From Artificial Intelligence. arXiv preprint arXiv:2408.12622."
+AI pursuing its own goals in conflict with human goals or values,AI Agency,"The AI system may act in conflict with ethical standards or human goals or values, especially those of its designers or users, potentially using dangerous capabilities such as manipulation, deception, or situational awareness to seek power, self-proliferate, or achieve other misaligned goals.","- CONTROL-017
+- CONTROL-021
+- CONTROL-022
+- CONTROL-037",,"- Slattery, P., Saeri, A. K., Grundy, E. A., Graham, J., Noetel, M., Uuk, R., ... & Thompson, N. (2024). The AI Risk Repository: A Comprehensive Meta-Review, Database, and Taxonomy of Risks From Artificial Intelligence. arXiv preprint arXiv:2408.12622."
+AI possessing dangerous capabilities,AI Agency,"The AI system may develop, access, or be provided with capabilities that increase its potential to cause mass harm through deception, weapons development and acquisition, persuasion and manipulation, political strategy, cyber-offense, AI development, situational awareness, and self-proliferation.","- CONTROL-021
+- CONTROL-022
+- CONTROL-037",,"- Slattery, P., Saeri, A. K., Grundy, E. A., Graham, J., Noetel, M., Uuk, R., ... & Thompson, N. (2024). The AI Risk Repository: A Comprehensive Meta-Review, Database, and Taxonomy of Risks From Artificial Intelligence. arXiv preprint arXiv:2408.12622."
