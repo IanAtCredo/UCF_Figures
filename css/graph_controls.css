@@ -1,13 +1,15 @@
 #controls {
     position: absolute;
     bottom: 20px;
-    left: 20px;
+    left: 10px;
+    max-height: 25vh;
+    overflow-y: auto;
     background: white;
     padding: 15px;
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     z-index: 1000;
-    min-width: 200px;
+    width: 17vw;
 }
 
 .CONTROL-group {

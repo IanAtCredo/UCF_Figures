@@ -966,7 +966,7 @@ function highlightAndCenterNode(nodeId) {
     const currentTransform = d3.zoomTransform(svg.node());
 
     // Calculate the translation needed to position the node at 25% from left and 50% vertical
-    const dx = width * 0.25 - node.x * currentTransform.k;
+    const dx = width * 0.375 - node.x * currentTransform.k;
     const dy = height * 0.6 - node.y * currentTransform.k;
 
     svg.transition()
