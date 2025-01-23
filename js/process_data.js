@@ -125,6 +125,7 @@ function processPolicyRequirements(content) {
                 id: policy['Policy Req Key'],
                 regulation: policy['Regulation'],
                 requirement: policy['Policy Requirement'],
+                citation: policy['Citation'],
                 relatedControls
             };
         });

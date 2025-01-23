@@ -254,8 +254,11 @@ async function initializeGraph() {
     // Calculate control degrees (number of connections)
     const controlDegrees = new Map();
     relationships.forEach(rel => {
-        const count = controlDegrees.get(rel.target) || 0;
-        controlDegrees.set(rel.target, count + 1);
+        // Only count risk connections for sizing
+        if (rel.source.startsWith('R-') || rel.source.startsWith('RISK-')) {  // Assuming risk IDs start with R- or RISK-
+            const count = controlDegrees.get(rel.target) || 0;
+            controlDegrees.set(rel.target, count + 1);
+        }
     });
 
     // Get max connections for scaling
@@ -282,7 +285,7 @@ async function initializeGraph() {
             const node = {
                 ...p,
                 type: 'policy',
-                radius: 70
+                radius: 30
             };
             nodeMap.set(p.id, node);
             return node;
@@ -698,10 +701,12 @@ function getTooltipContent(d) {
                         <div class="description-label">Description</div>
                         <div class="description">${d.description}</div>`;
     } else if (d.type === 'control') {
-        // Get all connected risks and their types
-        const connectedRisks = currentLinks
-            .filter(l => l.target === d)
-            .map(l => l.source);
+        // Get all connected nodes
+        const connectedNodes = currentLinks.filter(l => l.target === d);
+
+        // Separate risks and policies
+        const connectedRisks = connectedNodes.filter(l => l.source.type === 'risk').map(l => l.source);
+        const connectedPolicies = connectedNodes.filter(l => l.source.type === 'policy').map(l => l.source);
 
         // Count risks by type
         const riskTypeCounts = connectedRisks.reduce((acc, risk) => {
@@ -724,6 +729,14 @@ function getTooltipContent(d) {
             `<li>${type} (${count})</li>`).join('')}
                             </ul>
                         </div>
+                        ${connectedPolicies.length > 0 ? `
+                        <div class="policy-requirements">
+                            Policy Requirements Addressed (${connectedPolicies.length}):
+                            <ul>
+                                ${connectedPolicies.map(policy => `<li>${policy.id}</li>`).join('')}
+                            </ul>
+                        </div>
+                        ` : ''}
                         <div class="description-label">Description</div>
                         <div class="description">${d.description}</div>`;
     } else if (d.type === 'policy') {
@@ -740,9 +753,12 @@ function createControlArcs(node, connections) {
         .innerRadius(radius - 2)
         .outerRadius(radius);
 
+    // Filter to only include risk connections
+    const riskConnections = connections.filter(conn => conn.source.type === 'risk');
+
     // Group connections by risk type
     const riskTypes = new Map();
-    connections.forEach(conn => {
+    riskConnections.forEach(conn => {
         const type = conn.source.riskType;
         if (!riskTypes.has(type)) {
             riskTypes.set(type, 0);
@@ -751,7 +767,7 @@ function createControlArcs(node, connections) {
     });
 
     // Convert to array and calculate percentages
-    const total = connections.length;
+    const total = riskConnections.length;
     let startAngle = 0;
     const arcs = [];
 
@@ -966,8 +982,8 @@ function highlightAndCenterNode(nodeId) {
     const currentTransform = d3.zoomTransform(svg.node());
 
     // Calculate the translation needed to position the node at 25% from left and 50% vertical
-    const dx = width * 0.375 - node.x * currentTransform.k;
-    const dy = height * 0.6 - node.y * currentTransform.k;
+    const dx = width * 0.25 - node.x * currentTransform.k;
+    const dy = height * 0.5 - node.y * currentTransform.k;
 
     svg.transition()
         .duration(750)
@@ -1028,9 +1044,11 @@ function populatePolicyTable(policyData) {
     const tbody = document.getElementById('policy-table-body');
     tbody.innerHTML = policyData.map(policy => `
                 <tr class="clickable-row" data-node-id="${policy.id}">
+                    <td>${policy.regulation}</td>   
                     <td>${policy.id}</td>
-                    <td>${policy.regulation}</td>
+                    <td>${policy.citation}</td>
                     <td>${policy.requirement}</td>
+                    
                 </tr>
             `).join('');
 
