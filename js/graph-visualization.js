@@ -254,11 +254,9 @@ async function initializeGraph() {
     // Calculate control degrees (number of connections)
     const controlDegrees = new Map();
     relationships.forEach(rel => {
-        // Only count risk connections for sizing
-        if (rel.source.startsWith('R-') || rel.source.startsWith('RISK-')) {  // Assuming risk IDs start with R- or RISK-
-            const count = controlDegrees.get(rel.target) || 0;
-            controlDegrees.set(rel.target, count + 1);
-        }
+        const count = controlDegrees.get(rel.target) || 0;
+        controlDegrees.set(rel.target, count + 1);
+
     });
 
     // Get max connections for scaling
@@ -285,7 +283,7 @@ async function initializeGraph() {
             const node = {
                 ...p,
                 type: 'policy',
-                radius: 30
+                radius: 70
             };
             nodeMap.set(p.id, node);
             return node;
